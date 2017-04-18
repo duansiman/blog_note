@@ -13,7 +13,7 @@ tags: Hexo
 　使用的是[Cafe](https://github.com/giscafer/hexo-theme-cafe)主题，由于[多说](http://dev.duoshuo.com/threads/58d1169ae293b89a20c57241)项目关闭，所以使用时国外[Disqus](https://disqus.com/)评论。<br/>
 　Cafe的_config.yml配置文件有说明，在博客的_config.yml文件配置disqus的账号就可以
 　![](Hexo的配置/2.jpg)
-###注册Disqus账号
+#### 注册Disqus账号
 　在admin里，setting里的shortname名字才是配置到_config.yml文件中的
 　![](Hexo的配置/3.jpg)
 分类
@@ -21,6 +21,9 @@ tags: Hexo
 　配置像这个分层次的分类
 　![](Hexo的配置/4.jpg)
 　![](Hexo的配置/5.jpg)
+标题
+---
+使用markdown的#标题时，#和标题要隔个空格，否则解析不了。
 云标签
 ---
 　把Cafe的tagcloud_color设置为true

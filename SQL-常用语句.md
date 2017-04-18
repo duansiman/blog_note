@@ -8,9 +8,8 @@ categories:
 ---
 MySQL
 ---
+#### 数据导入导出
 ``` bash
-	mysql --version		
-		mysql版本
 	mysqldump -u用户名 -p密码  数据库名 > 导出的文件名 
 		导出整个数据库
 	mysqldump -u用户名 -p密码  数据库名 表名> 导出的文件名 
@@ -22,6 +21,15 @@ MySQL
 	source sql文件
 		导入数据库
 ```
+#### 连接数及状态信息
+	show status like '%connect%'
+		show status  查看所有状态参数，Threads_connected 当前的连接数，Connections 试图连接，max_used_connections并发过过最大数量
+	show processlist;
+		显示当前正在执行的mysql连接
+	mysqladmin -u -p -h status
+		显示当前mysql状态
+	mysqladmin -u -p -h extended-status
+		显示mysql的其他状态
 表
 ---
 ``` bash
