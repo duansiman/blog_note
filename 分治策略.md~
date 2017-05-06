@@ -1,0 +1,100 @@
+原理
+---
+有时候需要求解和原问题完全不一样的子问题,称为合并子问题步骤的一部分.
+
+最大子数组
+---
+一个序列A[n],按着分治思想把序列分成A[1,mid]和A[mid+1, n]序列.这时,最大子数组要么在A[1,mid]里面,要么在A[mid+1, n]里面,还有可能是跨中间A[i,mid,j]序列中
+
+递归伪代码
+---
+``` java
+    public static Tuple findMax(int[] A, int low, int high){
+        Tuple<Integer, Integer, Integer> tuple = new Tuple<>();
+        if (low == high) {
+            tuple.left = low;
+            tuple.right = high;
+            tuple.sum = A[low];
+            return tuple;
+        } else {
+            int mid = (low + high)/2;
+            Tuple<Integer, Integer, Integer> lTuple = findMax(A, low, mid);
+            Tuple<Integer, Integer, Integer> cTuple = findCrossMax(A, low, mid, high);
+            Tuple<Integer, Integer, Integer> rTuple = findMax(A, mid + 1, high);
+            if (lTuple.sum > cTuple.sum && lTuple.sum > rTuple.sum) {
+                return lTuple;
+            } else if (rTuple.sum > cTuple.sum && rTuple.sum > lTuple.sum) {
+                return rTuple;
+            } else {
+                return cTuple;
+            }
+        }
+    }
+
+    public static Tuple findCrossMax(int[] A, int low, int mid, int high){
+        Tuple<Integer, Integer, Integer> tuple = new Tuple<>();
+        int lSum = Integer.MIN_VALUE;
+        int temp = 0;
+        int l = -1;
+        for (int i = mid; i >= low; i--) {
+            temp += A[i];
+            if (temp > lSum) {
+                lSum = temp;
+                l = i;
+            }
+        }
+
+        int rSum = Integer.MIN_VALUE;
+        int r = -1;
+        temp = 0;
+        for (int i = mid; i <= high; i++) {
+            temp += A[i];
+            if (temp > rSum) {
+                rSum = temp;
+                r= i;
+            }
+        }
+        tuple.left=l;
+        tuple.right=r;
+        tuple.sum = lSum + rSum - A[mid];
+        return tuple;
+    }
+```
+
+线性时间求解
+---
+若已知A[1...j]的最大子数组，A[1...j+1]的最大子数组要么是A[1...j]的最大子数组，要么是某个子数组A[i...j+1](1<=i<=j+1).在已知A[1...j]的最大子数组的情况下，可以在线性时间内找出形如A[i..j+1]的最大子数组
+
+伪代码
+---
+``` java
+      public static Tuple findMaxOfLine(int[] A, int low, int high){
+        Tuple<Integer, Integer, Integer> tuple = new Tuple<>();
+        int sum = A[low];
+        int eSum = A[low];
+        int l=low;
+        int r=low;
+        for (int i = low+1; i <= high; i++) {
+            eSum += A[i];
+            if (eSum > sum) {//判断A[1...j]是否为最大子数组
+                r=i;
+                sum=eSum;
+                continue;
+            }
+            int temp = eSum;
+            for (int j = l; j < i; j++) { //判断A[i...j+1]是否为最大子数组
+                temp -= A[j];
+                if (temp > sum) {
+                    l=j+1;
+                    r=i;
+                    sum=temp;
+                    eSum = temp;
+                }
+            }
+        }
+        tuple.left=l;
+        tuple.right=r;
+        tuple.sum=sum;
+        return tuple;
+    }
+```
