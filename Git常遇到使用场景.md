@@ -42,3 +42,10 @@ tags: Git问题场景
 让git push命令不需要密码
 ---
 　GitHub获得远程库时，有ssh方式和https方式。使用ssh时保存密钥对以后可以不再输入帐号密码，而https却不能。已经存在的项目修改.git目录下的config文件中的url。
+
+中文显示问题
+---
+git config --global core.quotepath false
+还原文件内容
+---
+使用git checkout file 还原本地修改。如果文件没有add到缓存区，使用IDE的Local History记录，来恢复原来被还原文件的修改内容。

@@ -30,6 +30,11 @@ MySQL
 		显示当前mysql状态
 	mysqladmin -u -p -h extended-status
 		显示mysql的其他状态
+#### 配置
+	
+	show variables like 'max_allowed_packet';
+		查看MySQL变量
+
 表
 ---
 ``` bash
@@ -38,3 +43,7 @@ MySQL
 	alter table t_user modify id smallint(5) unsigned;	
 		修改字段类型
 ```
+函数
+---
+	show function status; 				查看自定义函数
+	show create function fun_name；		查看函数源码

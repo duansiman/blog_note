@@ -1,0 +1,42 @@
+---
+title: Linux-运维
+date: 2017-05-05 18:01:21
+tags:
+---
+修改SSH端口和禁止Root远程登录
+---
+修改端口
+
+	/etc/ssh/sshd_config文件中
+	修改SSH端口，修改port后的端口
+禁止Root远程登录：
+	
+	把PermitRootLogin yes 改为 PermitRootLogin no
+	重启服务，service ssh restart
+
+流量监控
+---
+#### vnstat
+安装
+
+	apt-get install vnstat
+创建监听数据库
+
+	vnstat -u -i eth0	->	eth0是系统网卡
+启动服务
+
+	service vnstat start
+开机自启动，在/etc/rc.local文件中加：
+
+	service vnstat start
+查看流量情况命令
+
+	每天的，vnstat -d
+	每月的，vnstat -m	
+	实时流量，vnstat -l -i eth0
+	查看五秒平均流量，vnstat -tr -i eth0
+
+不能统计流量，需要修改.eh0权限，在/var/lib/vnstat目录中
+
+	chown vnstat:vnstat .eth0 -R
+	chmod 0640 .eth0

@@ -35,3 +35,24 @@ tags: nginx
 
 代理、反向代理
 ---
+
+nginx 403 Forbidden
+---
+nginx的启动用户默认是nginx用户，需要修改web目录的权限
+
+静态文件缓存
+---
+server中配置缓存，需要指定root值，否则默认是Nginx的目录，会导致找不到文件。
+``` bash
+	#静态文件缓存时间设置
+    location ~ .*\.(gif|jpg|jpeg|png|bmp|swf)$ {
+         root   /root/blog_front/blog-front/dist;
+         expires 30d;
+    }
+
+    #静态文件缓存时间设置
+    location ~ .*\.(js|css)?$ {
+         root   /root/blog_front/blog-front/dist;
+         expires 1h;
+    }
+```
