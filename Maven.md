@@ -25,5 +25,73 @@ pre-site, site, post-site, site-deploy
 ---
 	mvn package -Dmaven.skip.test=true 
 		打war包
-	mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
-		创建项目
+	java -cp XXX.jar Main
+		执行main方法
+
+目标
+---
+查看项目依赖
+
+	mvn dependency:resolve
+	mvn dependency:tree			以树形式打印
+	mvn install -X				打开调试标记，查看完整依赖踪迹，包括因为冲突被拒绝加入的构件
+### Exec 插件
+运行Java类或其他脚本
+	
+	mvn exec:java -Dexec.mainClass=com.epdc.maven.App
+### Surefire插件
+处理单元测试的，如下配置
+``` xml
+			<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-surefire-plugin</artifactId>
+                <configuration></configuration>
+            </plugin>
+```
+运行到test阶段为止所有生命周期阶段
+
+	mvn test	有测试单元失败，会停止当前的构建
+#### configuration
+
+忽略测试失败,或者mvn test -Dmaven.test.failure.ignore=ture
+	
+	<testFailureIgnore>true</testFailureIgnore>
+完成跳过单元测试，或者mvn test -Dmaven.test.skip=ture
+	
+	<skip>true</skip>
+
+### Assembly插件
+创建应用程序特有分发包，包括项目的二进制文件和所有的依赖，配置
+``` xml
+<plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+```
+### Archetype 插件
+#### generate
+创建项目
+	
+	mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app	java项目
+	mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-webapp	web项目
+		
+### Jetty插件
+运行web应用，配置
+``` xml
+			<plugin>
+                <groupId>org.eclipse.jetty</groupId>
+                <artifactId>jetty-maven-plugin</artifactId>
+                <version>9.3.14.v20161028</version>
+                <configuration>
+                    <scanIntervalSeconds>1</scanIntervalSeconds>
+                </configuration>
+            </plugin>
+```
+启动web应用
+	
+	mvn jetty:run

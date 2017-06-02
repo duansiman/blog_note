@@ -40,3 +40,24 @@ tags:
 
 	chown vnstat:vnstat .eth0 -R
 	chmod 0640 .eth0
+
+rz，sz命令
+---
+sz：将选定的文件发送（send）到本地机器
+rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上传到服务器(receive)
+
+`注意：`单独用rz会有两个问题：上传中断、上传文件变化（md5不同），解决办法是上传是用rz -be，并且去掉弹出的对话框中“Upload files as ASCII”前的勾选。
+	
+	-b binary 用binary的方式上传下载，不解释字符为ascii
+	-e 强制escape 所有控制字符，比如Ctrl+x，DEL等
+安装
+	
+	下载地址	http://www.ohse.de/uwe/software/lrzsz.html
+	配置		./configure --prefix=/usr/local/lrzsz
+	编译		make
+	安装		make install
+创建连接	
+
+	cd /usr/bin  
+	sudo ln -s /usr/local/lrzsz/bin/lrz rz  
+	sudo ln -s /usr/local/lrzsz/bin/lsz sz 
