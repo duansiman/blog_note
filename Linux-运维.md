@@ -61,3 +61,55 @@ rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上
 	cd /usr/bin  
 	sudo ln -s /usr/local/lrzsz/bin/lrz rz  
 	sudo ln -s /usr/local/lrzsz/bin/lsz sz 
+/boot分区不足,清理boot分区
+---
+#### 查看系统已安装内核	
+	
+	dpkg --get-selections|grep linux-image
+
+#### 查看系统使用内核
+
+	uname -a	
+
+#### 删除不使用内核
+	
+	sudo apt-get purge 内核名称
+	sudo apt-get remove linux-image-(版本号)
+#### 清理
+	清理/usr/src下的内核目录
+	sudo apt-get autoremove 删除残留文件
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

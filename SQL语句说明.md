@@ -1,5 +1,5 @@
 ---
-title: SQL  常用语句
+title: SQL语句说明
 date: 2017-04-06 15:14:32
 tags: SQL语句
 categories: 
@@ -43,6 +43,14 @@ MySQL
 	alter table t_user modify id smallint(5) unsigned;	
 		修改字段类型
 ```
+#### 查看表结构
+	desc 表名;
+	show columns from 表名;
+	show create table 表名;
+
+	use information_schema
+	select * from columns where table_name='表名'
+
 函数
 ---
 	show function status; 				查看自定义函数
