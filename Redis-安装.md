@@ -17,6 +17,10 @@ Redis安装
 	You need tcl 8.5 or newer in order to run the Redis test
 可以不运行redis test, tcl官网http://www.linuxfromscratch.org/blfs/view/cvs/general/tcl.html
 
+脚本启动
+---
+	
+	/etc/init.d/redis_6379 start
 
 Redis代码访问
 ---

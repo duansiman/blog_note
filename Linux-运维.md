@@ -61,6 +61,7 @@ rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上
 	cd /usr/bin  
 	sudo ln -s /usr/local/lrzsz/bin/lrz rz  
 	sudo ln -s /usr/local/lrzsz/bin/lsz sz 
+
 /boot分区不足,清理boot分区
 ---
 #### 查看系统已安装内核	
@@ -79,37 +80,16 @@ rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上
 	清理/usr/src下的内核目录
 	sudo apt-get autoremove 删除残留文件
 
+添加用户
+---
+使用useradd或adduser命令，在centos是一样的，而ubuntu下useradd命令没有创建用户主目录
+#### 添加root权限
+使用visudo 来修改/etc/sudoers文件，文件中增加
+	
+	username ALL=(ALL) ALL
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+#### xshell连接linux系统，操作卡
+关闭DNS解析，修改/etc/ssh/sshd_config文件中：
+	
+	UseDNS no
+	/etc/init.d/sshd restart

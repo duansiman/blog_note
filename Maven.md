@@ -30,10 +30,14 @@ pre-site, site, post-site, site-deploy
 
 目标
 ---
+### Dependency 插件
+分析
+	
+	mvn dependency:analyze
 查看项目依赖
 
 	mvn dependency:resolve
-	mvn dependency:tree			以树形式打印
+	mvn dependency:tree			列出直接和传递性依赖，以树形式打印
 	mvn install -X				打开调试标记，查看完整依赖踪迹，包括因为冲突被拒绝加入的构件
 ### Exec 插件
 运行Java类或其他脚本
@@ -95,3 +99,7 @@ pre-site, site, post-site, site-deploy
 启动web应用
 	
 	mvn jetty:run
+### Help插件
+pom继承超级pom 和 父pom, 得到混合各个pom配置的有效pom。effective-pom目标可以查看有效pom
+	
+	mvn help:effective-pom
