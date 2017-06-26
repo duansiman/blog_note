@@ -32,3 +32,10 @@ sudo：无法初始化策略插件
     vi /etc/sudoers 
     恢复本文件内容并存盘
 * 退出Recovery模式，重新启动ubuntu。
+
+无法解析或打开软件包的列表或是状态文件解决方案
+---
+	E: Encountered a section with no Package: header
+	E: Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_
+	natty_main_i18n_Translation-en
+sudo rm /var/lib/apt/lists/* -vf

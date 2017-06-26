@@ -29,19 +29,24 @@ sources.list文件内容：
 物理CPU、逻辑CPU和CPU核数
 ---
 
-#### 物理CPU
-插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。
-#### 逻辑CPU
-/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数
-一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core
-逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)
+物理CPU
+
+	插槽上的CPU个数,物理cpu数量，可以数不重复的 physical id 有几个。
+逻辑CPU
+
+	/proc/cpuinfo 文件,用来存储cpu硬件信息的.列出了processor 0 – n 的规格,n不是真实的cpu数
+	一颗cpu可以有多核，加上intel的超线程技术(HT), 可以在逻辑上再分一倍数量的cpu core
+	逻辑CPU数量=物理cpu数量 x cpu cores 这个规格值 x 2(如果支持并开启ht)
 
 	Linux下top查看的CPU也是逻辑CPU个数
-#### 查看物理CPU的个数
+查看物理CPU的个数
+	
 	cat /proc/cpuinfo |grep "physical id"|sort |uniq|wc -l
-#### 查看逻辑CPU的个数
+查看逻辑CPU的个数
+	
 	cat /proc/cpuinfo |grep "processor"|wc -l
-#### 查看CPU是几核
+查看CPU是几核
+	
 	cat /proc/cpuinfo |grep "cores"|uniq
 查看内存、CPU使用情况
 ---
@@ -53,12 +58,7 @@ sources.list文件内容：
 	cat /proc/meminfo		查看内存额定值
 	ll -h /proc/kcore		查看内存镜像文件的大小
 
-无法解析或打开软件包的列表或是状态文件解决方案
----
-	E: Encountered a section with no Package: header
-	E: Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_
-	natty_main_i18n_Translation-en
-sudo rm /var/lib/apt/lists/* -vf
+
 
 apt-get清除文件
 ---
@@ -94,6 +94,9 @@ Ubuntu系统升级
 
 	使用时会要求你输入当前用户的密码，系统确实输入正确即以 root 权限来执行命令，接下来一段时间（默认为5分钟）再次使用 sudo 命令就不需要输密码了
 
+添加用户
+---
+使用useradd或adduser命令，在centos是一样的，而ubuntu下useradd命令没有创建用户主目录
 
 外部命令
 ---
@@ -119,14 +122,10 @@ sudo 操作记录日志
 
 sudo命令
 ---
+sudo 是linux下常用的允许普通用户使用超级用户权限的工具，允许系统管理员让普通用户执行一些或者全部的root命令，如halt，reboot，su等等。这样不仅减少了root用户的登陆和管理时间，同样也提高了安全性。Sudo不是对shell的一个代替，它是面向每个命令的。它的特性主要有这样几点： 
+* sudo能够限制用户只在某台主机上运行某些命令。
+* sudo提供了丰富的日志，详细地记录了每个用户干了什么。它能够将日志传到中心主机或者日志服务器。
+* sudo使用时间戳文件来执行类似的“检票”系统。当用户调用sudo并且输入它的密码时，用户获得了一张存活期为5分钟的票（这个值可以在编译的时候改变）。
+* sudo的配置文件是sudoers文件，它允许系统管理员集中的管理用户的使用权限和使用的主机。它所存放的位置默认是在/etc/sudoers，属性必须为0440。visudo来对该文件进行修改。强烈推荐使用该命令修改 sudoers
 
-	sudo 是linux下常用的允许普通用户使用超级用户权限的工具，允许系统管理员让普通用户执行一些或者全部的root命令，如halt，reboot，su等等。这样不仅减少了root用户的登陆和管理时间，同样也提高了安全性。Sudo不是对shell的一个代替，它是面向每个命令的。它的特性主要有这样几点： 
-	1.sudo能够限制用户只在某台主机上运行某些命令。
-	2.sudo提供了丰富的日志，详细地记录了每个用户干了什么。它能够将日志传到中心主机或者日志服务器。
-	3.sudo使用时间戳文件来执行类似的“检票”系统。当用户调用sudo并且输入它的密码时，用户获得了一张存活期为5分钟的票（这个值可以在编译的时候改变）。
-	4.sudo的配置文件是sudoers文件，它允许系统管理员集中的管理用户的使用权限和使用的主机。它所存放的位置默认是在/etc/sudoers，属性必须为0440。visudo来对该文件进行修改。强烈推荐使用该命令修改 sudoers
 
-系统使用技巧
----
-	
-* 执行某命令时忘记加sudo, 可以输入sudo !! 即可，这里的 !! 代表上一条命令

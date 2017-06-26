@@ -64,32 +64,31 @@ rz：运行该命令会弹出一个文件选择窗口，从本地选择文件上
 
 /boot分区不足,清理boot分区
 ---
-#### 查看系统已安装内核	
+查看系统已安装内核	
 	
 	dpkg --get-selections|grep linux-image
 
-#### 查看系统使用内核
+查看系统使用内核
 
 	uname -a	
 
-#### 删除不使用内核
+删除不使用内核
 	
 	sudo apt-get purge 内核名称
 	sudo apt-get remove linux-image-(版本号)
-#### 清理
+清理
+
 	清理/usr/src下的内核目录
 	sudo apt-get autoremove 删除残留文件
 
-添加用户
+xshell连接linux系统，操作卡
 ---
-使用useradd或adduser命令，在centos是一样的，而ubuntu下useradd命令没有创建用户主目录
-#### 添加root权限
-使用visudo 来修改/etc/sudoers文件，文件中增加
-	
-	username ALL=(ALL) ALL
-
-#### xshell连接linux系统，操作卡
 关闭DNS解析，修改/etc/ssh/sshd_config文件中：
 	
 	UseDNS no
 	/etc/init.d/sshd restart
+
+系统使用技巧
+---
+	
+* 执行某命令时忘记加sudo, 可以输入sudo !! 即可，这里的 !! 代表上一条命令
