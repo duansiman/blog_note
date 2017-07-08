@@ -1,8 +1,9 @@
 ---
-title: Linux 命令说明
-date: 2017-04-17 11:07:22
+title: Linux 命令
+date: 2017-06-17 10:47:21
 category: Linux
-tags: Linux 命令说明
+tags: Linux命令
+---
 
 命令通用参数
 ---
@@ -22,10 +23,14 @@ tags: Linux 命令说明
 系统相关的
 ---
 系统版本
+
 	lsb_release -a
 	cat /etc/issue
+	getconf LONG_BIT		查看系统位数
+	uname -a
 
 防火墙
+
 	ufw status	
 	ufw disable
 	ufw enable

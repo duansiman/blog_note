@@ -1,7 +1,8 @@
 ---
 title: Linux-运维
 date: 2017-05-05 18:01:21
-tags:
+category: Linux
+tags: Linux运维
 ---
 修改SSH端口和禁止Root远程登录
 ---

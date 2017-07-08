@@ -1,5 +1,5 @@
 ---
-title: Redis 错误集
+title: Redis 学习
 date: 2017-04-07 14:38:41
 tags: Redis
 categories: 
@@ -36,4 +36,11 @@ Redis 命令学习
 ---
 	(error) NOAUTH Authentication required.
 通过auth输入密码，auth "yourpassword"
+
+错误
+---
+
+``` bash
+redis.clients.jedis.exceptions.JedisConnectionException: Unknown reply: N
+```
 

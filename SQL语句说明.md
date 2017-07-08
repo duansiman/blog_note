@@ -8,7 +8,7 @@ categories:
 ---
 MySQL
 ---
-#### 数据导入导出
+数据库数据导入导出
 ``` bash
 	mysqldump -u用户名 -p密码  数据库名 > 导出的文件名 
 		导出整个数据库
@@ -21,7 +21,8 @@ MySQL
 	source sql文件
 		导入数据库
 ```
-#### 连接数及状态信息
+连接数及状态信息
+
 	show status like '%connect%'
 		show status  查看所有状态参数，Threads_connected 当前的连接数，Connections 试图连接，max_used_connections并发过过最大数量
 	show processlist;
@@ -30,10 +31,14 @@ MySQL
 		显示当前mysql状态
 	mysqladmin -u -p -h extended-status
 		显示mysql的其他状态
-#### 配置
+配置
 	
 	show variables like 'max_allowed_packet';
 		查看MySQL变量
+把查询结果导出到文件中
+	
+	mysql -h 127.0.0.1 -u root -p XXXX -P 3306 blog -Ne "select * from table"  > /tmp/test/txt
+	-N 输出到文件内容不带表字段名
 
 表
 ---
@@ -43,7 +48,8 @@ MySQL
 	alter table t_user modify id smallint(5) unsigned;	
 		修改字段类型
 ```
-#### 查看表结构
+查看表结构
+
 	desc 表名;
 	show columns from 表名;
 	show create table 表名;
