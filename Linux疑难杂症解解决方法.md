@@ -39,3 +39,8 @@ sudo：无法初始化策略插件
 	E: Problem with MergeList /var/lib/apt/lists/cn.archive.ubuntu.com_ubuntu_dists_
 	natty_main_i18n_Translation-en
 sudo rm /var/lib/apt/lists/* -vf
+
+apt-get安装出现错误
+---
+	E: Sub-process /usr/bin/dpkg returned an error code (1)
+apt-get update
