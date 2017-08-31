@@ -75,10 +75,10 @@ URL 格式
 配置同步参数
 	
 	CHANGE MASTER TO 
-	MASTER_HOST='192.186.0.101'
-	MASTER_USER='root'
-	MASTER_PASSWORD='123456'
-	MASTER_LOG_FILE='binlog.000001'
+	MASTER_HOST='192.186.0.101',
+	MASTER_USER='root',
+	MASTER_PASSWORD='123456',
+	MASTER_LOG_FILE='binlog.000001',
 	MASTER_LOG_POS=154;
 
 MASTER_HOST 主数据库所在服务器ip
@@ -139,6 +139,22 @@ MASTER_LOG_FILE,MASTER_LOG_POS是从主数据库查到日志信息
 	
 	[mysqld]
 	default_character_set=utf8;
+
+问题
+---
+	--initialize specified but the data directory has files in it. Aborting.
+把/var/lib/mysql目录中文件删掉
 	
+	ERROR 1290 (HY000): The MySQL server is running with the --skip-grant-tables option so it cannot execute this statement
+flush privileges;
+	
+	ERROR 3009 (HY000): Column count of mysql.user is wrong. Expected 45, found 42. Created with MySQL 50557, now running 50719. Please use mysql_upgrade to fix this error.
+mysql_upgrade --force -uroot -p
+	
+	ERROR 1054 (42S22): Unknown column 'Password' in 'field list'
+update user set authentication_string=password('1111') where user='root';
+	
+	ERROR 1682 (HY000): Native table 'performance_schema'.'session_variables' has the wrong structure
+sudo mysql_upgrade -u root -p, then restart mysql
 	
 
