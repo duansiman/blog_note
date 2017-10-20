@@ -61,11 +61,26 @@ Ctrl+Alt+T 	打开终端
 	a 代表添加文件／文件夹到压缩包
 	-t 是指定压缩类型 一般我们定为7z
 	-r 表示递归所有的子文件夹，manager.7z 是压缩好后的压缩包名，/home/manager/* 是要压缩的目录，＊是表示该目录下所有的文件。
-### 解压和压缩
-	
+### 文件解压和压缩
+zip文件
+
+	zip -r path 		压缩
+	unzip xxx.zip -d path	解压
+tar文件
+
 	tar -cvf  xxx.tar /xxx			打包不压缩
 	tar -zcvf xxx.tar.gz /xxx		打包gzip压缩
 	tar -jcvf xxx.tar.bz2 /xxx		打包bzip2压缩
+7z文件
+	
+	看7z命令
+
+rar文件
+	
+	sudo apt-get install rar	安装
+	rar x xxx.rar			解压
+	rar a xxx.rar xxx/		压缩
+	
 
 ### cp
 	-R, -r, --recursive   	递归复制
