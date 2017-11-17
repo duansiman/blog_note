@@ -30,7 +30,7 @@ git archive
 ---
 作用范围是其在的目录及其子目录
 	
-	git status --ignore		可以看到忽略的文件
+	git status --ignored		可以看到忽略的文件
 	git add -f				强制添加忽悠的文件
 
 `独享式`忽悠

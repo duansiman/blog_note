@@ -156,5 +156,39 @@ update user set authentication_string=password('1111') where user='root';
 	
 	ERROR 1682 (HY000): Native table 'performance_schema'.'session_variables' has the wrong structure
 sudo mysql_upgrade -u root -p, then restart mysql
+
+	ERROR 1467 (HY000): Failed to read auto-increment value from storage engine
+auto-increment到最大值了。
+use information_schema;
+select * from TABLES where TABLE_NAME='t_article_label';
+
+函数
+---
+#### 字符串连接函数
+concat(str1,str2)
 	
+	有一个参数为null,就返回null
+CONCAT_WS(separator,str1,str2,...)
+	
+	以分隔符separator链接字符，如果有参数为null,跳过这个参数。
+group_concat([DISTINCT] 要连接的字段 [Order BY ASC/DESC 排序字段] [Separator '分隔符'])
+	
+	这是一个聚合函数，把有多个值的字段连接起来成一行。	
+
+#### 时间函数
+from_unixtime()/unix_timestamp()
+	
+	把Unix时间戳转换为日期/把日期转换为Unix时间戳
+inet_aton()/inet_ntoa()
+	
+	用无符号整数存储IP地址，把IP转换成整数/把整数转换成IP
+date +/- interval expr unit
+	
+	日期计算，例如：一天之前，select now() - interval 24 hour;
+
+#### 字符截取函数
+
+left(str, len)
+	
+	截取字符串中前len个字符
 

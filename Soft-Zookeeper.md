@@ -30,3 +30,8 @@ zookeeper有个内嵌的管理控制台是通过jetty启动，也会占用8080�
 或者停止这服务
 
 	admin.enableServer=false
+
+问题
+---
+	ruok is not executed because it is not in the whitelist.
+配置那些命令可用 4lw.commands.whitelist=stat, ruok, conf, isro		配所有命令可用 4lw.commands.whitelist=*
