@@ -249,6 +249,8 @@ git config
 		删除分支test
 	git branch -D test					
 		强制删除分支test，如果test分支没有整合
+	git branch --set-upstream-to=origin/<branch> master
+		set tracking information for this branch
 版本
 ---
 	git tag							查看版本
