@@ -269,5 +269,5 @@ git config
 ---
 	git remote add origin url				与 GitHub 上的项目进行关联,origin 是给这个项目的远程仓库起的名字
 	git remote remove <name>             	取消关联
-	git remote rm 分支					删除关联
+	git remote rm origin					删除关联
 	git remote -v						当前项目有哪些远程仓库	

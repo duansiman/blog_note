@@ -41,3 +41,17 @@ IntelliJ IDEA
 |Alt+F7|搜索方法，变量在哪被引用|
 |Ctrl+Shift+F|全局搜索|
 |Ctrl+Shift+Z|反撤销，Ctrl+Z的反操作|
+
+Visual Studio
+---
+|快捷键|描述|
+| :--- | :--- |
+|Ctrl+J|代码提示|
+|Ctrl+Shitf+Space|参数提示|
+|Ctrl+K+F|格式化整个块|
+|Ctrl+K, F|格式化整个文件|
+|Ctrl +]|检查括号匹配(在左右括号间切换)|
+|Ctrl+Shift+7(8)|方法定义和调用之点切换|
+|Ctrl+K,C|注释代码|
+|Ctrl+K,U|取消注释|
+|Ctrl+Shift+L|删除当前行|
