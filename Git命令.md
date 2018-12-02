@@ -269,3 +269,8 @@ git config
 	git remote remove <name>             	取消关联
 	git remote rm 分支					删除关联
 	git remote -v						当前项目有哪些远程仓库	
+
+Proxy
+---
+	git config --global http.proxy 'socks5://127.0.0.1:1080'
+	git config --global https.proxy 'socks5://127.0.0.1:1080'
