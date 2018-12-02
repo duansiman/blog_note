@@ -128,7 +128,7 @@ Mockito 使用
 * doNothing().when().methodXxx()  返回void
 
 #### 验证交互行为
-Mock对象一旦建立会自动记录自己的交互行为
+Mock对象一旦建立会自测试动记录自己的交互行为
 * verify(mock, atLeastOnce()).methodXxx 方法至少调用一次
 * verify(mock, atLeast(1)).methodXxx
 * verify(mock, atMost(1)).methodXxx 至多调用一次
@@ -158,3 +158,21 @@ Mock对象一旦建立会自动记录自己的交互行为
 
 #### assertPropertyXxxEquals 属性断言
 只比较对象特定属性assertPropertyReflectionEquals和assertPropertyLenientEquals
+
+Spring Boot
+---
+
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest
+@ActiveProfiles("dev")
+
+### Web Flux Test
+WebTestClient 测试WebFlux服务器端点，无论是否有正在运行的服务器。
+测试没有正在运行的服务器与Spring MVC中的MockMvc相当，其中使用模拟请求和响应而不是使用套接字通过网络连接
+
+### Maven Test
+	
+	mvn test -Dtest=[ClassName]
+	执行测试类
+	mvn test -Dtest=[ClassName]#[MethodName]
+	执行测试方法

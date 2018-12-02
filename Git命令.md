@@ -249,6 +249,8 @@ git config
 		删除分支test
 	git branch -D test					
 		强制删除分支test，如果test分支没有整合
+	git branch --set-upstream-to=origin/<branch> master
+		set tracking information for this branch
 版本
 ---
 	git tag							查看版本
@@ -274,3 +276,5 @@ Proxy
 ---
 	git config --global http.proxy 'socks5://127.0.0.1:1080'
 	git config --global https.proxy 'socks5://127.0.0.1:1080'
+	git remote rm origin					删除关联
+	git remote -v						当前项目有哪些远程仓库	
