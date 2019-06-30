@@ -35,3 +35,22 @@ Exception in thread "main" java.nio.file.AccessDeniedException: /usr/local/elast
 	at org.elasticsearch.tools.launchers.JvmOptionsParser.main(JvmOptionsParser.java:60)
 
 	sudo chown -R epdc elasticsearch-7.1.1
+
+[2019-06-30T04:32:52,469][INFO ][o.e.b.BootstrapChecks    ] [epdc] bound or publishing to a non-loopback address, enforcing bootstrap checks
+ERROR: [3] bootstrap checks failed
+[1]: max number of threads [3605] for user [epdc] is too low, increase to at least [4096]
+[2]: max virtual memory areas vm.max_map_count [65530] is too low, increase to at least [262144]
+[3]: the default discovery settings are unsuitable for production use; at least one of [discovery.seed_hosts, discovery.seed_providers, cluster.initial_master_nodes] must be configure
+
+	/etc/security/limits.conf文件，添加以以下两行即可解决
+
+	* soft nofile 65535
+	* hard nofile 65535
+
+	/etc/sysctl.conf
+	vm.max_map_count=262144
+		
+	sysctl -p
+
+	elasticsearch.yml 文件，添加一下行即可解决
+	cluster.initial_master_nodes: ["node-1"]
