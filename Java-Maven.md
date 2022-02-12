@@ -38,7 +38,8 @@ pre-site, site, post-site, site-deploy
 
 	mvn dependency:resolve
 	mvn dependency:tree			列出直接和传递性依赖，以树形式打印
-	mvn install -X				打开调试标记，查看完整依赖踪迹，包括因为冲突被拒绝加入的构件
+	
+	
 ### Exec 插件
 运行Java类或其他脚本
 	
@@ -83,7 +84,7 @@ pre-site, site, post-site, site-deploy
 	
 	mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app	java项目
 	mvn archetype:generate -DgroupId=com.mycompany.app -DartifactId=my-app -DarchetypeArtifactId=maven-archetype-webapp	web项目
-		
+
 ### Jetty插件
 运行web应用，配置
 ``` xml
@@ -102,4 +103,5 @@ pre-site, site, post-site, site-deploy
 ### Help插件
 pom继承超级pom 和 父pom, 得到混合各个pom配置的有效pom。effective-pom目标可以查看有效pom
 	
+
 	mvn help:effective-pom
